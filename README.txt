@@ -1,5 +1,6 @@
 ----------------------------------- PROJECT INVENTOR ----------------------------------- 
-	The main goal of this project is to contribute to Salesianos on its warehouse
+
+	The main goal of this project is to contribute to Salesianos on it's warehouse
 logistics in order to improve their efficiency.
 
 	On this repository are our programme to import the data from their former Lotus
