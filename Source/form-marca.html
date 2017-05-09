@@ -11,24 +11,41 @@
 </head>
 
 <body>
-    <div class="logincontainer">
+    <!--php conexion-->
+    <div class="container">
+        <div id="menuContainer">
+            <div id="logo">
+                <img src="images/logosz.png" />
+            </div>
+            <div id="user">
+                <h2>Pepe Manué</h2>
+                <!--php sesion start-->
+                <img src="images/logout.png" />
+                <!--cerrar sesion-->
+            </div>
+        </div>
+        <br><br><br><br><br><br>
         <div id="formcontainer">
-            <form>
-                <div id="title">
-                    <h1>PANEL DE ACCESO</h1>
-                </div>
-                <div class="form-group">
-                    <label for="email">Usuario</label>
-                    <input type="email" class="form-control" id="email">   </div>
-                <div class="form-group">
-                    <label for="pwd">Contraseña</label>
-                    <input type="password" class="form-control" id="pwd">   </div>
-                <div id="bSubmit">
-                    <button type="submit" class="btn">Acceder</button>
+            <form name="marcas" id="marcas" method="post" action="ins-marcas.php">
+                <div class="row">
+                    <div class="col-*-*">MARCA:</div>
+                    <div class="col-*-*"><input type="text" name="marca" id="marca"></div>
                 </div>
             </form>
+            <div class="row">
+                <div class="col-*-*"><button type="submit" class="btn">Añadir</button></div>
+                <div class="col-*-*">
+                    <a href="ver-personas.php"><input type="button" class="btn" value="Ver"></a>
+                </div>
+                <div class="col-*-*">
+                    <a href=""><input type="button" class="btn" value="Volver"></a>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
