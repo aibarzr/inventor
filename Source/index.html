@@ -13,16 +13,14 @@
 <body>
     <div class="logincontainer">
         <div id="formcontainer">
-            <form>
+            <form name="usuarios" id="usuarios" method="post" action="login.php">
                 <div id="title">
                     <h1>PANEL DE ACCESO</h1>
                 </div>
                 <div class="form-group">
-                    <label for="email">Usuario</label>
-                    <input type="email" class="form-control" id="email">   </div>
+                    <label for="usuario">Usuario</label>     <input type="text" class="form-control" name="usuario" id="usuario">   </div>
                 <div class="form-group">
-                    <label for="pwd">Contraseña</label>
-                    <input type="password" class="form-control" id="pwd">   </div>
+                    <label for="pwd">Contraseña</label>     <input type="password" class="form-control" name="pwd" id="pwd">   </div>
                 <div id="bSubmit">
                     <button type="submit" class="btn">Acceder</button>
                 </div>
