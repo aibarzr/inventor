@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2017 a las 12:58:20
+-- Tiempo de generación: 25-05-2017 a las 08:48:18
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -71,11 +71,22 @@ CREATE TABLE `impresoras` (
   `consumible` varchar(255) DEFAULT NULL,
   `numserie` varchar(255) DEFAULT NULL,
   `numinterno` varchar(255) DEFAULT NULL,
-  `fechaentrada` datetime DEFAULT NULL,
-  `fechabaja` datetime DEFAULT NULL,
+  `fechaentrada` date DEFAULT NULL,
+  `fechabaja` date DEFAULT '0000-00-00',
   `garantia` tinyint(3) UNSIGNED DEFAULT '0',
   `idestado` int(11) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Disparadores `impresoras`
+--
+DELIMITER $$
+CREATE TRIGGER `impresoras` BEFORE DELETE ON `impresoras` FOR EACH ROW INSERT INTO historialimpresoras
+SELECT *
+FROM impresoras
+WHERE idreferencia=old.idreferencia
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -86,11 +97,31 @@ CREATE TABLE `impresoras` (
 CREATE TABLE `incidencias` (
   `idincidencia` int(11) NOT NULL,
   `idreferencia` int(11) DEFAULT '0',
-  `fechaincidencia` datetime DEFAULT NULL,
+  `fechaincidencia` date DEFAULT NULL,
   `incidencia` longtext,
-  `fechasolucion` datetime DEFAULT NULL,
+  `usuario` varchar(80) NOT NULL,
+  `fechasolucion` date DEFAULT NULL,
   `solucion` longtext
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `incidencias`
+--
+
+INSERT INTO `incidencias` (`idincidencia`, `idreferencia`, `fechaincidencia`, `incidencia`, `usuario`, `fechasolucion`, `solucion`) VALUES
+(33, 1, '2017-05-01', 'incidencia1', '  ', '0000-00-00', ' '),
+(34, 1, '2017-05-01', 'incidencia', 'Lydia Abril Cedillo', '0000-00-00', ' ');
+
+--
+-- Disparadores `incidencias`
+--
+DELIMITER $$
+CREATE TRIGGER `solucionIncidencias` BEFORE DELETE ON `incidencias` FOR EACH ROW INSERT INTO historialincidencias
+SELECT *
+FROM incidencias
+WHERE idincidencia=old.idincidencia
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -127,11 +158,7 @@ CREATE TABLE `marca` (
 --
 
 INSERT INTO `marca` (`idmarca`, `marca`) VALUES
-(1, 'Marca1'),
-(2, 'Marca2'),
-(3, 'Marca3'),
-(4, 'Marca4'),
-(5, 'Marca5');
+(46, 'PRUEBA');
 
 -- --------------------------------------------------------
 
@@ -141,8 +168,15 @@ INSERT INTO `marca` (`idmarca`, `marca`) VALUES
 
 CREATE TABLE `marcaproveedor` (
   `idmarca` int(11) NOT NULL DEFAULT '0',
-  `idproveedor` int(11) NOT NULL DEFAULT '0'
+  `idproveedor` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `marcaproveedor`
+--
+
+INSERT INTO `marcaproveedor` (`idmarca`, `idproveedor`) VALUES
+(46, 8);
 
 -- --------------------------------------------------------
 
@@ -152,19 +186,25 @@ CREATE TABLE `marcaproveedor` (
 
 CREATE TABLE `material` (
   `idreferencia` int(11) NOT NULL,
+  `material` varchar(100) NOT NULL,
   `modelo` varchar(255) DEFAULT NULL,
   `idmarca` int(11) DEFAULT '0',
+  `idproveedor` int(11) NOT NULL,
   `idusuario` int(11) DEFAULT '0',
   `idubicacion` int(11) DEFAULT '0',
   `observaciones` longtext
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `material`
+-- Disparadores `material`
 --
-
-INSERT INTO `material` (`idreferencia`, `modelo`, `idmarca`, `idusuario`, `idubicacion`, `observaciones`) VALUES
-(1, 'A', 1, 1, 1, 'PATATA');
+DELIMITER $$
+CREATE TRIGGER `materiales` BEFORE DELETE ON `material` FOR EACH ROW INSERT INTO historialmateriales
+SELECT *
+FROM material
+WHERE idreferencia=old.idreferencia
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -175,14 +215,25 @@ INSERT INTO `material` (`idreferencia`, `modelo`, `idmarca`, `idusuario`, `idubi
 CREATE TABLE `monitores` (
   `idreferencia` int(11) NOT NULL DEFAULT '0',
   `tipo` varchar(255) DEFAULT NULL,
-  `tamaño` varchar(255) DEFAULT NULL,
+  `tamano` varchar(255) DEFAULT NULL,
   `numserie` varchar(255) DEFAULT NULL,
   `numinterno` varchar(255) DEFAULT NULL,
-  `fechaentrada` datetime DEFAULT NULL,
-  `fechabaja` datetime DEFAULT NULL,
+  `fechaentrada` date DEFAULT NULL,
+  `fechabaja` date DEFAULT '0000-00-00',
   `garantia` tinyint(3) UNSIGNED DEFAULT '0',
   `idestado` int(11) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Disparadores `monitores`
+--
+DELIMITER $$
+CREATE TRIGGER `monitores` BEFORE DELETE ON `monitores` FOR EACH ROW INSERT INTO historialmonitores
+SELECT *
+FROM monitores
+WHERE idreferencia=old.idreferencia
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -201,11 +252,22 @@ CREATE TABLE `ordenadores` (
   `dominio` varchar(255) DEFAULT NULL,
   `numserie` varchar(255) DEFAULT NULL,
   `numinterno` varchar(255) DEFAULT NULL,
-  `fechaentrada` datetime DEFAULT NULL,
-  `fechabaja` datetime DEFAULT NULL,
+  `fechaentrada` date DEFAULT NULL,
+  `fechabaja` date DEFAULT '0000-00-00',
   `garantia` tinyint(3) UNSIGNED DEFAULT '0',
   `idestado` int(11) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Disparadores `ordenadores`
+--
+DELIMITER $$
+CREATE TRIGGER `ordenadores` BEFORE DELETE ON `ordenadores` FOR EACH ROW INSERT INTO historialordenadores
+SELECT *
+FROM ordenadores
+WHERE idreferencia=old.idreferencia
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -256,6 +318,14 @@ CREATE TABLE `software` (
   `observaciones` longtext
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `software`
+--
+
+INSERT INTO `software` (`idsoftware`, `software`, `idlicencia`, `codigolicencia`, `cantidad`, `fechafin`, `observaciones`) VALUES
+(5, 'software2', 1, '0202', 1, '2017-05-23', 'soft2'),
+(4, 'software1', 1, '0101', 1, '2017-05-01', 'soft1');
+
 -- --------------------------------------------------------
 
 --
@@ -267,6 +337,13 @@ CREATE TABLE `softwareinstalado` (
   `idsoftware` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `softwareinstalado`
+--
+
+INSERT INTO `softwareinstalado` (`idreferencia`, `idsoftware`) VALUES
+(4, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -277,6 +354,15 @@ CREATE TABLE `ubicacion` (
   `idubicacion` int(11) NOT NULL,
   `ubicacion` varchar(60) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ubicacion`
+--
+
+INSERT INTO `ubicacion` (`idubicacion`, `ubicacion`) VALUES
+(6, 'ubicacion2'),
+(5, 'ubicacion1'),
+(7, 'ULTIMA');
 
 -- --------------------------------------------------------
 
@@ -348,7 +434,7 @@ ALTER TABLE `marca`
 --
 ALTER TABLE `marcaproveedor`
   ADD PRIMARY KEY (`idmarca`,`idproveedor`),
-  ADD KEY `idproveedor` (`idproveedor`);
+  ADD UNIQUE KEY `idmarca` (`idmarca`,`idproveedor`);
 
 --
 -- Indices de la tabla `material`
@@ -357,7 +443,8 @@ ALTER TABLE `material`
   ADD PRIMARY KEY (`idreferencia`),
   ADD KEY `idmarca` (`idmarca`),
   ADD KEY `idubicacion` (`idubicacion`),
-  ADD KEY `idusuario` (`idusuario`);
+  ADD KEY `idusuario` (`idusuario`),
+  ADD KEY `idproveedor` (`idproveedor`);
 
 --
 -- Indices de la tabla `monitores`
@@ -430,7 +517,7 @@ ALTER TABLE `estadoequipos`
 -- AUTO_INCREMENT de la tabla `incidencias`
 --
 ALTER TABLE `incidencias`
-  MODIFY `idincidencia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idincidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `licencia`
 --
@@ -440,12 +527,12 @@ ALTER TABLE `licencia`
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `idmarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idmarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
-  MODIFY `idreferencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idreferencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
@@ -460,12 +547,12 @@ ALTER TABLE `revisiones`
 -- AUTO_INCREMENT de la tabla `software`
 --
 ALTER TABLE `software`
-  MODIFY `idsoftware` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idsoftware` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `ubicacion`
 --
 ALTER TABLE `ubicacion`
-  MODIFY `idubicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idubicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
