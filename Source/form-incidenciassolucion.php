@@ -15,18 +15,18 @@
         include("conexion.php");
     ?>
         <div class="container">
-            <div id="menuContainer">
+            <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" />
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
-                    <a href="logout.php"><img src="images/logout.png" width="30" /></a>
+                    <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
             <br><br><br><br><br><br>
@@ -34,32 +34,33 @@
                 <form name="incidenciassolucion" id="incidenciassolucion" method="post" action="ins-incidenciassolucion.php">
 
                     <div class="row">
-                        <div class="col-*-*">Nº INCIDENCIA:</div>
-                        <div class='col-*-*'>
+                        <div class="col" style = "font-size: 20px">Nº INCIDENCIA:</div>
+                        <div class='col' >
                             <?php
                                 include("conexion.php");
                                 $cla=$_GET['clave'];
-                                echo "<input type='text' name='firstname' value='$cla'>";
+                                echo "<input type='text' name='firstname' value='$cla' style = \"height: 30px; width: 100%\">";
                             ?>
                         </div>
                     </div>
-
+                    <br>
                     <div class="row">
-                        <div class="col-*-*">FECHA DE LA SOLUCIÓN:</div>
-                        <div class="col-*-*"><input type="date" name="fecha" id="fecha"></div>
+                        <div class="col" style = "font-size: 20px">FECHA DE LA SOLUCIÓN:</div>
+                        <div class="col"><input type="date" name="fecha" id="fecha" style = "height: 30px; width: 100%"></div>
                     </div>
+                    <br>
                     <div class="row">
-                        <div class="col-*-*">SOLUCIÓN:</div>
-                        <div class="col-*-*"><textarea class="form-control" rows="5" name="solucion" id="solucion"></textarea></div>
+                        <div class="col" style = "font-size: 20px">SOLUCIÓN:</div>
+                        <div class="col"><textarea class="form-control" rows="5" name="solucion" id="solucion" style = "height: 30px; width: 100%"></textarea></div>
                     </div>
-
+                    <br>
                             <div class="row">
-                                <div class="col-*-*"><button type="submit" class="btn">Enviar</button></div>
-                                <div class="col-*-*">
-                                    <a href="ver-incidencias.php"><input type="button" class="btn" value="Ver"></a>
+                                <div class="col"><button type="submit" class="btn" style = "width: 130px;">Enviar</button></div>
+                                <div class="col">
+                                    <a href="ver-incidencias.php"><input type="button" class="btn" value="Ver" style = "width: 130px;"></a>
                                 </div>
-                                <div class="col-*-*">
-                                    <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
+                                <div class="col">
+                                    <a href=""><input type="button" class="btn" value="Volver a inicio" style = "width: 130px;"></a>
                                 </div>
                             </div>
                 </form>

@@ -15,27 +15,27 @@
     <div class="container">
             <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" width="30"/>
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
                     <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
-           <div class="container" style="padding-top:200px">
+           <div id="formcontainer" style="margin-top:200px; width: 850px;">
                 <div class="row">
-                        <div class="col-md-7 col-sm-7 col-xs-7">SOFTWARE</div>
-                        <div class="col-md-7 col-sm-7 col-xs-7">LICENCIA</div>
-                        <div class="col-md-7 col-sm-7 col-xs-7">CODIGO</div>
-                        <div class="col-md-7 col-sm-7 col-xs-7">CANTIDAD</div>
-                        <div class="col-md-7 col-sm-7 col-xs-7">FEHCA FIN</div>
-                        <div class="col-md-7 col-sm-7 col-xs-7">OBSERVACIONES</div>
-                        <div class="col-md-7 col-sm-7 col-xs-7"></div>
+                        <div class="col"><h5>SOFTWARE</h5></div>
+                        <div class="col"><h5>LICENCIA</h5></div>
+                        <div class="col"><h5>CODIGO</h5></div>
+                        <div class="col"><h5>CANTIDAD</h5></div>
+                        <div class="col"><h5>FEHCA FIN</h5></div>
+                        <div class="col"><h5>OBSERVACIONES</h5></div>
+                        <div class="col"></div>
                 </div>
 <?php
     include("conexion.php");
@@ -49,12 +49,12 @@
 
         echo"<div class='row'>";
         
-        echo"<div class='col-md-7 col-sm-7 col-xs-7'>$linea[software]</div>";
-        echo"<div class='col-md-7 col-sm-7 col-xs-7'>$linea[licencia]</div>";
-        echo"<div class='col-md-7 col-sm-7 col-xs-7'>$linea[codigolicencia]</div>";
-        echo"<div class='col-md-7 col-sm-7 col-xs-7'>$linea[cantidad]</div>";
-        echo"<div class='col-md-7 col-sm-7 col-xs-7'>$linea[fechafin]</div>";
-        echo"<div class='col-md-7 col-sm-7 col-xs-7'>$linea[observaciones]</div>";
+        echo"<div class='col'>$linea[software]</div>";
+        echo"<div class='col'>$linea[licencia]</div>";
+        echo"<div class='col'>$linea[codigolicencia]</div>";
+        echo"<div class='col'>$linea[cantidad]</div>";
+        echo"<div class='col'>$linea[fechafin]</div>";
+        echo"<div class='col'>$linea[observaciones]</div>";
         echo"<div class='col-md-4 col-sm-4 col-xs-4'><a href='bor-software.php?clave=$linea[idsoftware]'><img src='./images/borrar.png' width='25'></a></div>";
         echo"</div>";
             
@@ -64,11 +64,12 @@
     }
 
 ?>
+<br>
             <div class="row">
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href="form-software.php"><input type="button" class="btn" value="Nuevo software"></a>
                         </div>
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
                         </div>
                     </div>

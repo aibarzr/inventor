@@ -5,12 +5,14 @@
     $ape2=$_POST['apellido2'];
     $esp=$_POST['especialidad'];
     
-    $logitud = 8;
-    $psswd = substr( md5(microtime()), 1, $logitud);
+    //PASSWORD
+    $logitud = 8; //LONGITUD PASSWORD
+    $psswd = substr( md5(microtime()), 1, $logitud); //CONTRASEÑA TIPO MD5
 
-    $usuario = substr("$nom", 0, 1);
-    $usuario .="$ape1";
-    $usuario = strtolower($usuario);
+    //USUARIO
+    $usuario = substr("$nom", 0, 1); //INICIAL
+    $usuario .="$ape1"; //INICIAL + APELLIDO
+    $usuario = strtolower($usuario); //USUARIO EN MINÚSCULAS
     
     include("conexion.php");
 

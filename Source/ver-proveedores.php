@@ -15,22 +15,22 @@
     <div class="container">
             <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" width="30"/>
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
                     <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
-           <div class="container" style="padding-top:200px">
+           <div id="formcontainer" style="margin-top:200px">
                 <div class="row">
-                        <div class="col-md-2 col-sm-2 col-xs-2">Proveedor</div>
-                        <div class="col-md-2 col-sm-2 col-xs-2"></div>
+                        <div class="col"><h5>Proveedor</h5></div>
+                        <div class="col"></div>
                 </div>
 <?php
     include("conexion.php");
@@ -44,8 +44,8 @@
 
         echo"<div class='row'>";
         
-        echo"<div class='col-md-2 col-sm-2 col-xs-2'>$linea[proveedor]</div>";
-        echo"<div class='col-md-2 col-sm-2 col-xs-2'><a href='bor-proveedores.php?clave=$linea[idproveedor]'><img src='./images/borrar.png' width='25'></a></div>";
+        echo"<div class='col'>$linea[proveedor]</div>";
+        echo"<div class='col'><a href='bor-proveedores.php?clave=$linea[idproveedor]'><img src='./images/borrar.png' width='25'></a></div>";
         echo"</div>";
             
             
@@ -53,11 +53,12 @@
         
     }
 ?>
+<br>
             <div class="row">
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href="form-proveedores.html"><input type="button" class="btn" value="Nuevo proveedor"></a>
                         </div>
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
                         </div>
                     </div>

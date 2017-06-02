@@ -15,10 +15,10 @@
     <div class="container">
             <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" width="30"/>
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
                             session_start();
                             echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
@@ -27,13 +27,13 @@
                     <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
-           <div class="container" style="padding-top:200px">
-                <div class="row">
-                        <div class="col-md-2 col-sm-2 col-xs-2">Nº INCIDENCIA</div>
-                        <div class="col-md-2 col-sm-2 col-xs-2">MATERIAL </div>
-                        <div class="col-md-2 col-sm-2 col-xs-2">FECHA DE LA INCIDENCIA</div>
-                        <div class="col-md-2 col-sm-2 col-xs-2">DESCRIPCIÓN INCIDENCIA</div>
-                        <div class="col-md-2 col-sm-2 col-xs-2"></div>
+           <div id = "formcontainer" style="margin-top:200px">
+                <div class="row" style = "padding-left: 20px;">
+                        <div class="col"><h5>Nº INCIDENCIA</h5></div>
+                        <div class="col"><h5>MATERIAL</h5></div>
+                        <div class="col"><h5>FECHA DE LA INCIDENCIA</h5></div>
+                        <div class="col"><h5>DESCRIPCIÓN INCIDENCIA</h5></div>
+                        <div class="col"></div>
                 </div>
 <?php
     include("conexion.php");
@@ -53,11 +53,12 @@
 
         echo"<div class='row'>";
         
-        echo"<div class='col-md-2 col-sm-2 col-xs-2'>$linea[idincidencia]</div>";
-        echo"<div class='col-md-2 col-sm-2 col-xs-2'>$linea[idreferencia]</div>";
-        echo"<div class='col-md-2 col-sm-2 col-xs-2'>$linea[fechaincidencia]</div>";
-        echo"<div class='col-md-2 col-sm-2 col-xs-2'>$linea[incidencia]</div>";
-        echo"<div class='col-md-2 col-sm-2 col-xs-2'>En curso</div>";
+        echo"<div class='col'>$linea[idincidencia]</div>";
+        echo"<div class='col'>$linea[idreferencia]</div>";
+        echo"<div class='col'>$linea[fechaincidencia]</div>";
+        echo"<div class='col'>$linea[incidencia]</div>";
+        echo"<div class='col'>En curso</div>";
+        echo"<hr style=\"background-color: white; height: 2px;\">";
         echo"</div>";
             
             
@@ -67,10 +68,10 @@
 
 ?>
             <div class="row">
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href="form-incidencias.php"><input type="button" class="btn" value="Nueva incidencia"></a>
                         </div>
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
                         </div>
                     </div>

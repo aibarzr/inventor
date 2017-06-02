@@ -14,27 +14,27 @@
         include("conexion.php");
     ?>
         <div class="container">
-            <div id="menuContainer">
+            <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" />
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
-                    <a href="logout.php"><img src="images/logout.png" width="30" /></a>
+                    <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
             <br><br><br><br><br><br>
             <div id="formcontainer">
                 <form name="proveedormarcas" id="proveedormarcas" method="post" action="ver-proveedoresmarcas.php">
                     <div class="row">
-                        <div class="col-*-*">SELECCIONE UN PROVEEDOR:</div>
-                        <div class="col-*-*">
-                            <select name="proveedores" id="proveedores">
+                        <div class="col" style="font-size: 20px">SELECCIONE UN PROVEEDOR:</div>
+                        <div class="col">
+                            <select name="proveedores" id="proveedores" style="height: 30px; width: 100%">
                                 <option value="">
                                         <?php
                                             include("conexion.php");
@@ -47,12 +47,11 @@
                         </select>    
                         </div>
                     </div>
-                    
-
+                    <br>
                             <div class="row">
-                                <div class="col-*-*"><button type="submit" class="btn">Buscar</button></div>
-                                <div class="col-*-*">
-                                    <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
+                                <div class="col"><button type="submit" class="btn" style="width: 130px;">Buscar</button></div>
+                                <div class="col">
+                                    <a href=""><input type="button" class="btn" value="Volver a inicio" style="width: 130px;"></a>
                                 </div>
                             </div>
                         </div>

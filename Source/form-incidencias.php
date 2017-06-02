@@ -15,27 +15,27 @@
         include("conexion.php");
     ?>
         <div class="container">
-            <div id="menuContainer">
+            <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" />
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
-                    <a href="logout.php"><img src="images/logout.png" width="30" /></a>
+                    <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
             <br><br><br><br><br><br>
             <div id="formcontainer">
                 <form name="incidencias" id="incidencias" method="post" action="ins-incidencias.php">
                     <div class="row">
-                        <div class="col-*-*">MATERIAL:</div>
-                        <div class="col-*-*">
-                            <select name="material" id="material">
+                        <div class="col" style = "font-size: 20px">MATERIAL:</div>
+                        <div class="col">
+                            <select name="material" id="material" style = "width: 100%; height: 30px;">
                                 <option value="">
                                     <?php
                                         $sql="SELECT * FROM material";
@@ -47,26 +47,25 @@
                             </select>  
                         </div>
                     </div>
+                    <br>
                     <div class="row">
-                        <div class="col-*-*">FECHA DE LA INCIDENCIA:</div>
-                        <div class="col-*-*"><input type="date" name="fecha" id="fecha"></div>
+                        <div class="col" style = "font-size: 20px">FECHA DE LA INCIDENCIA:</div>
+                        <div class="col"><input type="date" name="fecha" id="fecha" style = "width: 100%; height: 30px;"></div>
                     </div>
+                    <br>
                     <div class="row">
-                        <div class="col-*-*">INCIDENCIA:</div>
-                        <div class="col-*-*"><textarea class="form-control" rows="5" name="incidencia" id="incidencia"></textarea></div>
+                        <div class="col" style = "font-size: 20px">INCIDENCIA:</div>
+                        <div class="col"><textarea class="form-control" rows="5" name="incidencia" id="incidencia" style = "height: 30px; width: 100%"></textarea></div>
                     </div>
-
-
-                    
-
-
+                    <br>
+                    <br>
                             <div class="row">
-                                <div class="col-*-*"><button type="submit" class="btn">Enviar</button></div>
-                                <div class="col-*-*">
-                                    <a href=""><input type="button" class="btn" value="Ver"></a>
+                                <div class="col"><button type="submit" class="btn" style = "width: 130px; text-align: center">Enviar</button></div>
+                                <div class="col">
+                                    <a href=""><input type="button" class="btn" value="Ver" style = "width: 130px; text-align: center"></a>
                                 </div>
-                                <div class="col-*-*">
-                                    <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
+                                <div class="col">
+                                    <a href=""><input type="button" class="btn" value="Volver a inicio" style = "width: 130px; text-align: center"></a>
                                 </div>
                             </div>
                 </form>

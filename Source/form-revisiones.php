@@ -15,27 +15,27 @@
         include("conexion.php");
     ?>
         <div class="container">
-            <div id="menuContainer">
+            <<div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" />
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
-                    <a href="logout.php"><img src="images/logout.png" width="30" /></a>
+                    <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
             <br><br><br><br><br><br>
             <div id="formcontainer">
                 <form name="revisiones" id="revisiones" method="post" action="ins-revisiones.php">
                     <div class="row">
-                        <div class="col-*-*">MATERIAL:</div>
-                        <div class="col-*-*">
-                            <select name="material" id="material">
+                        <div class="col" style="font-size: 20px">MATERIAL:</div>
+                        <div class="col">
+                            <select name="material" id="material" style="height: 30px; width: 100%">
                                 <option value="">
                                     <?php
                                         $sql="SELECT * FROM material";
@@ -47,30 +47,35 @@
                             </select>  
                         </div>
                     </div>
+                    <br>
                     <div class="row">
-                        <div class="col-*-*">REVISOR:</div>
-                        <div class="col-*-*"><input type="text" name="revisor" id="revisor"></div>
+                        <div class="col" style="font-size: 20px">REVISOR:</div>
+                        <div class="col"><input type="text" name="revisor" id="revisor" style="height: 30px; width: 100%"></div>
                     </div>
+                    <br>
                     <div class="row">
-                        <div class="col-*-*">FECHA DE LA REVISION:</div>
-                        <div class="col-*-*"><input type="date" name="fecharev" id="fecharev"></div>
+                        <div class="col" style="font-size: 20px">FECHA DE LA REVISION:</div>
+                        <div class="col"><input type="date" name="fecharev" id="fecharev" style="height: 30px; width: 100%"></div>
                     </div>
+                    <br>
                     <div class="row">
-                            <div class="col-*-*">OBSERVACIONES:</div>
+                            <div class="col" style="font-size: 20px">OBSERVACIONES:</div>
                             
-                            <div class="col-*-*"><textarea class="form-control" rows="5" name="observaciones" id="observaciones"></textarea></div>
+                            <div class="col"><textarea class="form-control" rows="5" name="observaciones" id="observaciones" style="height: 30px; width: 100%"></textarea></div>
                         </div>
-                    </div>
-                    
-                            <div class="row">
-                                <div class="col-*-*"><button type="submit" class="btn">Añadir</button></div>
-                                <div class="col-*-*">
-                                    <a href="ver-revisiones.php"><input type="button" class="btn" value="Ver"></a>
+                        <br>
+                        <div class="row">
+                                <div class="col"><button type="submit" class="btn" style="width: 130px;">Añadir</button></div>
+                                <div class="col">
+                                    <a href="ver-revisiones.php"><input type="button" class="btn" value="Ver" style="width: 130px;"></a>
                                 </div>
-                                <div class="col-*-*">
-                                    <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
+                                <div class="col">
+                                    <a href=""><input type="button" class="btn" value="Volver a inicio" style="width: 130px;"></a>
                                 </div>
                             </div>
+                    </div>
+                    
+                            
                 </form>
                 </div>
                 </div>

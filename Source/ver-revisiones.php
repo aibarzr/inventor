@@ -15,25 +15,25 @@
     <div class="container">
             <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" width="30"/>
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
                     <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
-           <div class="container" style="padding-top:200px">
+           <div id="formcontainer" style="margin-top:200px">
                 <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-5">MATERIAL</div>
-                        <div class="col-md-5 col-sm-5 col-xs-5">REVISOR</div>
-                        <div class="col-md-5 col-sm-5 col-xs-5">FECHA REVISION</div>
-                        <div class="col-md-5 col-sm-5 col-xs-5">OBSERVACIONES</div>
-                        <div class="col-md-5 col-sm-5 col-xs-5"></div>
+                        <div class="col"><h5>MATERIAL</h5></div>
+                        <div class="col"><h5>REVISOR</h5></div>
+                        <div class="col"><h5>FECHA REVISION</h5></div>
+                        <div class="col"><h5>OBSERVACIONES</h5></div>
+                        <div class="col"></div>
                 </div>
 <?php
     include("conexion.php");
@@ -47,11 +47,11 @@
 
         echo"<div class='row'>";
         
-        echo"<div class='col-md-5 col-sm-5 col-xs-5'>$linea[idreferencia]</div>";
-        echo"<div class='col-md-5 col-sm-5 col-xs-5'>$linea[revisor]</div>";
-        echo"<div class='col-md-5 col-sm-5 col-xs-5'>$linea[fecharevision]</div>";
-        echo"<div class='col-md-5 col-sm-5 col-xs-5'>$linea[observaciones]</div>";
-        echo"<div class='col-md-5 col-sm-5 col-xs-5'><a href='bor-revisiones.php?clave=$linea[idrevision]'><img src='./images/borrar.png' width='25'></a></div>";
+        echo"<div class='col'>$linea[idreferencia]</div>";
+        echo"<div class='col'>$linea[revisor]</div>";
+        echo"<div class='col'>$linea[fecharevision]</div>";
+        echo"<div class='col'>$linea[observaciones]</div>";
+        echo"<div class='col'><a href='bor-revisiones.php?clave=$linea[idrevision]'><img src='./images/borrar.png' width='25'></a></div>";
         echo"</div>";
             
             
@@ -59,11 +59,13 @@
         
     }
 ?>
+<br>
+
             <div class="row">
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href="form-revisiones.php"><input type="button" class="btn" value="Nueva revisión"></a>
                         </div>
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
                         </div>
                     </div>

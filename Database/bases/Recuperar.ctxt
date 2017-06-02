@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Recuperar
+comment0.text=\n\ \n
+comment1.params=t1\ t2\ t3
+comment1.target=Recuperar(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=void\ obtener()
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

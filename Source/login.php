@@ -23,14 +23,16 @@ if($total==0){
             $_SESSION['nombre']=$linea['nombre'];
             $_SESSION['apellido']=$linea['primerapellido'];
             $_SESSION['apellidosegundo']=$linea['segundoapellido'];
+            $_SESSION['idespecialidad']=$linea['idespecialidad'];
 
-            if($linea['idespecialidad']=='1'){//SAT
-                //header("location:form-usuarios.php");
+            header("location:dashboard.php");
+            /*if($linea['idespecialidad']=='1'){//SAT
+                header("location:form-usuarios.php");
             } else if($linea['idespecialidad']=='2'){//ADMIN
-                header("location:prueba.php");
+                header("location:dashboard.php");
             } else {//PROFESORES
-                //header("location:form-usuarios.php");
-            }
+                header("location:form-usuarios.php");
+            }*/
 
         } else {
             echo"<h2>CLAVE INCORRECTA</h2>Pulse <a href='index.html'>aquí</a> para continuar.";

@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -30,29 +31,29 @@
             </div>
             <br><br><br><br><br><br>
             <div id="formcontainer">
-                <form name="ubicaciones" id="ubicaciones" method="post" action="ins-ubicaciones.php">
+                <form name="proveedores" id="proveedores" method="post" action="ins-proveedores.php">
                     <div class="row">
-                        <div class="col" style="font-size: 20px">UBICACIÓN:</div>
-                        <div class="col"><input type="text" name="ubicacion" id="ubicacion" style="height: 30px; width: 100%"></div>
+                        <div class="col" style="font-size: 20px">PROVEEDOR:</div>
+                        <div class="col"><input type="text" name="proveedor" id="proveedor" style="height: 30px; width: 100%"></div>
                     </div>
                     <br>
-                            <div class="row">
-                                <div class="col"><button type="submit" class="btn" style="width: 130px;">Añadir</button></div>
-                                <div class="col">
-                                    <a href="ver-ubicaciones.php"><input type="button" class="btn" value="Ver" style="width: 130px;"></a>
-                                </div>
-                                <div class="col">
-                                    <a href=""><input type="button" class="btn" value="Volver a inicio" style="width: 130px;"></a>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col"><button type="submit" class="btn" style="width: 130px;">Añadir</button></div>
+                        <div class="col">
+                            <a href="ver-proveedores.php"><input type="button" class="btn" value="Ver" style="width: 130px;"></a>
+                        </div>
+                        <div class="col">
+                            <a href=""><input type="button" class="btn" value="Volver a inicio" style="width: 130px;"></a>
+                        </div>
+                    </div>
                 </form>
-                </div>
-                </div>
+            </div>
+        </div>
 
 
 
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
 
 </html>

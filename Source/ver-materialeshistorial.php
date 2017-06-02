@@ -12,24 +12,24 @@
 <body>
 <div class="container-fluid">
     <div class="container">
-            <div id="menuContainer" style="z-index:2">
+            <<div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" width="30"/>
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
                     <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
-           <div class="container" style="padding-top:200px">
+           <div id="formcontainer" style="margin-top:200px">
                 <div class="row">
-                        <div class="col-md-2 col-sm-2 col-xs-2">SOFTWARE: </div>
-                        <div class="col-md-2 col-sm-2 col-xs-2"></div>
+                        <div class="col"><h5>MATERIALES</h5> </div>
+                        <div class="col"></div>
                 </div>
 <?php
 
@@ -39,20 +39,20 @@
 
     if($mat==1){//monitor
         echo"<div class='row'>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MODELO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MARCA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> PROVEEDOR </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> USUARIO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> UBICACIÓN </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> OBSERVACIONES </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> TIPO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> TAMAÑO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> NUMERO DE SERIE </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> NUMERO INTERNO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> FECHA ENTRADA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> FECHA BAJA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> GARANTIA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> ESTADO </div>";
+        echo"<div class='col'> <h5>MODELO</h5> </div>";
+        echo"<div class='col'> <h5>MARCA</h5> </div>";
+        echo"<div class='col'> <h5>PROVEEDOR</h5> </div>";
+        echo"<div class='col'> <h5>USUARIO</h5> </div>";
+        echo"<div class='col'> <h5>UBICACIÓN</h5> </div>";
+        echo"<div class='col'> <h5>OBSERVACIONES</h5> </div>";
+        echo"<div class='col'> <h5>TIPO</h5> </div>";
+        echo"<div class='col'> <h5>TAMAÑO</h5> </div>";
+        echo"<div class='col'> <h5>NUMERO DE SERIE</h5> </div>";
+        echo"<div class='col'> <h5>NUMERO INTERNO</h5> </div>";
+        echo"<div class='col'> <h5>FECHA ENTRADA</h5> </div>";
+        echo"<div class='col'> <h5>FECHA BAJA</h5> </div>";
+        echo"<div class='col'> <h5>GARANTIA</h5> </div>";
+        echo"<div class='col'> <h5>ESTADO</h5> </div>";
         echo"</div>";
 
         $sql="SELECT m.idreferencia, m.material, m.modelo, ma.marca, m.idproveedor, usu.nombre, usu.primerapellido, usu.segundoapellido, u.ubicacion, m.observaciones, mon.*, es.*
@@ -66,38 +66,38 @@
         while($linea=mysqli_fetch_array($registros)){
 
         echo"<div class='row'>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[modelo]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[marca]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[idproveedor]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[nombre] $linea[primerapellido] $linea[segundoapellido]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[ubicacion]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[observaciones]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[tipo]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[tamano]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[numserie]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[numinterno]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[fechaentrada]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[fechabaja]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[garantia]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[estado]</div>";
+        echo"<div class='col'>$linea[modelo]</div>";
+        echo"<div class='col'>$linea[marca]</div>";
+        echo"<div class='col'>$linea[idproveedor]</div>";
+        echo"<div class='col'>$linea[nombre] $linea[primerapellido] $linea[segundoapellido]</div>";
+        echo"<div class='col'>$linea[ubicacion]</div>";
+        echo"<div class='col'>$linea[observaciones]</div>";
+        echo"<div class='col'>$linea[tipo]</div>";
+        echo"<div class='col'>$linea[tamano]</div>";
+        echo"<div class='col'>$linea[numserie]</div>";
+        echo"<div class='col'>$linea[numinterno]</div>";
+        echo"<div class='col'>$linea[fechaentrada]</div>";
+        echo"<div class='col'>$linea[fechabaja]</div>";
+        echo"<div class='col'>$linea[garantia]</div>";
+        echo"<div class='col'>$linea[estado]</div>";
         echo"</div>";  
         }
     } else if($mat==2) {//impresora
         echo"<div class='row'>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MODELO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MARCA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> PROVEEDOR </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> USUARIO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> UBICACIÓN </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> OBSERVACIONES </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> TIPO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> CONSUMIBLE </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> NUMERO DE SERIE </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> NUMERO INTERNO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> FECHA ENTRADA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> FECHA BAJA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> GARANTIA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> ESTADO </div>";
+        echo"<div class='col'> <h5>MODELO</h5> </div>";
+        echo"<div class='col'> <h5>MARCA </h5></div>";
+        echo"<div class='col'> <h5>PROVEEDOR</h5> </div>";
+        echo"<div class='col'> <h5>USUARIO</h5> </div>";
+        echo"<div class='col'> <h5>UBICACIÓN</h5> </div>";
+        echo"<div class='col'> <h5>OBSERVACIONES</h5> </div>";
+        echo"<div class='col'> <h5>TIPO</h5> </div>";
+        echo"<div class='col'> <h5>CONSUMIBLE</h5> </div>";
+        echo"<div class='col'> <h5>NUMERO DE SERIE</h5> </div>";
+        echo"<div class='col'> <h5>NUMERO INTERNO</h5> </div>";
+        echo"<div class='col'> <h5>FECHA ENTRADA</h5> </div>";
+        echo"<div class='col'> <h5>FECHA BAJA </h5></div>";
+        echo"<div class='col'> <h5>GARANTIA</h5> </div>";
+        echo"<div class='col'> <h5>ESTADO</h5> </div>";
         echo"</div>";
 
         $sql="SELECT m.idreferencia, m.material, m.modelo, ma.marca, m.idproveedor, usu.nombre, usu.primerapellido, usu.segundoapellido, u.ubicacion, m.observaciones, im.*, es.*
@@ -111,45 +111,45 @@
         while($linea=mysqli_fetch_array($registros)){
 
         echo"<div class='row'>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[modelo]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[marca]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[idproveedor]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[nombre] $linea[primerapellido] $linea[segundoapellido]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[ubicacion]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[observaciones]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[tipo]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[consumible]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[numserie]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[numinterno]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[fechaentrada]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[fechabaja]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[garantia]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[estado]</div>";
+        echo"<div class='col'>$linea[modelo]</div>";
+        echo"<div class='col'>$linea[marca]</div>";
+        echo"<div class='col'>$linea[idproveedor]</div>";
+        echo"<div class='col'>$linea[nombre] $linea[primerapellido] $linea[segundoapellido]</div>";
+        echo"<div class='col'>$linea[ubicacion]</div>";
+        echo"<div class='col'>$linea[observaciones]</div>";
+        echo"<div class='col'>$linea[tipo]</div>";
+        echo"<div class='col'>$linea[consumible]</div>";
+        echo"<div class='col'>$linea[numserie]</div>";
+        echo"<div class='col'>$linea[numinterno]</div>";
+        echo"<div class='col'>$linea[fechaentrada]</div>";
+        echo"<div class='col'>$linea[fechabaja]</div>";
+        echo"<div class='col'>$linea[garantia]</div>";
+        echo"<div class='col'>$linea[estado]</div>";
         echo"</div>";  
         }
     } else if($mat==3) {//ordenador
         echo"<div class='row'>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MODELO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MARCA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> PROVEEDOR </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> USUARIO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> UBICACIÓN </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> OBSERVACIONES </div>";
+        echo"<div class='col'> <h5>MODELO</h5> </div>";
+        echo"<div class='col'> <h5>MARCA</h5> </div>";
+        echo"<div class='col'> <h5>PROVEEDOR</h5> </div>";
+        echo"<div class='col'> <h5>USUARIO</h5> </div>";
+        echo"<div class='col'> <h5>UBICACIÓN</h5> </div>";
+        echo"<div class='col'> <h5>OBSERVACIONES</h5> </div>";
 
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> PLACA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> PROCESADOR </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> RAM </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> DISCO DURO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> TARJETAS </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> IP </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> DOMINIO </div>";
+        echo"<div class='col'> <h5>PLACA</h5> </div>";
+        echo"<div class='col'> <h5>PROCESADOR </h5></div>";
+        echo"<div class='col'> <h5>RAM</h5> </div>";
+        echo"<div class='col'> <h5>DISCO DURO</h5> </div>";
+        echo"<div class='col'> <h5>TARJETAS</h5> </div>";
+        echo"<div class='col'> <h5>IP </h5></div>";
+        echo"<div class='col'> <h5>DOMINIO </h5></div>";
 
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> NUMERO DE SERIE </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> NUMERO INTERNO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> FECHA ENTRADA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> FECHA BAJA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> GARANTIA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> ESTADO </div>";
+        echo"<div class='col'> <h5>NUMERO DE SERIE</h5> </div>";
+        echo"<div class='col'> <h5>NUMERO INTERNO</h5> </div>";
+        echo"<div class='col'> <h5>FECHA ENTRADA</h5> </div>";
+        echo"<div class='col'> <h5>FECHA BAJA</h5> </div>";
+        echo"<div class='col'> <h5>GARANTIA</h5> </div>";
+        echo"<div class='col'> <h5>ESTADO</h5> </div>";
         echo"</div>";
 
         $sql="SELECT m.idreferencia, m.material, m.modelo, ma.marca, m.idproveedor, usu.nombre, usu.primerapellido, usu.segundoapellido, u.ubicacion, m.observaciones, ord.*, es.*
@@ -163,39 +163,39 @@
         while($linea=mysqli_fetch_array($registros)){
 
         echo"<div class='row'>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[modelo]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[marca]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[idproveedor]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[nombre] $linea[primerapellido] $linea[segundoapellido]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[ubicacion]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[observaciones]</div>";
+        echo"<div class='col'>$linea[modelo]</div>";
+        echo"<div class='col'>$linea[marca]</div>";
+        echo"<div class='col'>$linea[idproveedor]</div>";
+        echo"<div class='col'>$linea[nombre] $linea[primerapellido] $linea[segundoapellido]</div>";
+        echo"<div class='col'>$linea[ubicacion]</div>";
+        echo"<div class='col'>$linea[observaciones]</div>";
 
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[placa]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[procesador]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[ram]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[discoduro]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[tarjetas]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[ip]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[dominio]</div>";
+        echo"<div class='col'>$linea[placa]</div>";
+        echo"<div class='col'>$linea[procesador]</div>";
+        echo"<div class='col'>$linea[ram]</div>";
+        echo"<div class='col'>$linea[discoduro]</div>";
+        echo"<div class='col'>$linea[tarjetas]</div>";
+        echo"<div class='col'>$linea[ip]</div>";
+        echo"<div class='col'>$linea[dominio]</div>";
 
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[numserie]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[numinterno]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[fechaentrada]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[fechabaja]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[garantia]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[estado]</div>";
+        echo"<div class='col'>$linea[numserie]</div>";
+        echo"<div class='col'>$linea[numinterno]</div>";
+        echo"<div class='col'>$linea[fechaentrada]</div>";
+        echo"<div class='col'>$linea[fechabaja]</div>";
+        echo"<div class='col'>$linea[garantia]</div>";
+        echo"<div class='col'>$linea[estado]</div>";
         echo"</div>";  
         }
         
     } else if($mat==4) {//otros
         echo"<div class='row'>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MATERIAL </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MODELO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> MARCA </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> PROVEEDOR </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> USUARIO </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> UBICACIÓN </div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'> OBSERVACIONES </div>";
+        echo"<div class='col'> <h5>MATERIAL</h5> </div>";
+        echo"<div class='col'> <h5>MODELO</h5> </div>";
+        echo"<div class='col'> <h5>MARCA</h5> </div>";
+        echo"<div class='col'> <h5>PROVEEDOR</h5> </div>";
+        echo"<div class='col'> <h5>USUARIO</h5> </div>";
+        echo"<div class='col'> <h5>UBICACIÓN </h5></div>";
+        echo"<div class='col'> <h5>OBSERVACIONES </h5></div>";
         echo"</div>";
 
         $sql="SELECT m.idreferencia, m.material, m.modelo, ma.marca, m.idproveedor, usu.nombre, usu.primerapellido, usu.segundoapellido, u.ubicacion, m.observaciones
@@ -211,23 +211,23 @@
         while($linea=mysqli_fetch_array($registros)){
 
         echo"<div class='row'>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[material]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[modelo]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[marca]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[idproveedor]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[nombre] $linea[primerapellido] $linea[segundoapellido]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[ubicacion]</div>";
-        echo"<div class='col-md-1 col-sm-1 col-xs-1'>$linea[observaciones]</div>";
+        echo"<div class='col'>$linea[material]</div>";
+        echo"<div class='col'>$linea[modelo]</div>";
+        echo"<div class='col'>$linea[marca]</div>";
+        echo"<div class='col'>$linea[idproveedor]</div>";
+        echo"<div class='col'>$linea[nombre] $linea[primerapellido] $linea[segundoapellido]</div>";
+        echo"<div class='col'>$linea[ubicacion]</div>";
+        echo"<div class='col'>$linea[observaciones]</div>";
         echo"</div>";  
         }
 
     }
 ?>
             <div class="row">
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href="ver-buscarmaterialeshistorial.php"><input type="button" class="btn" value="Buscar otro material"></a>
                         </div>
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
                         </div>
                     </div>

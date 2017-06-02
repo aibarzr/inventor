@@ -15,27 +15,27 @@
     <div class="container">
             <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" width="30"/>
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
                     <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
-           <div class="container" style="padding-top:200px">
+           <div id="formcontainer" style="margin-top:200px; width: 950px;">
                 <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-4">NOMBRE</div>
-                        <div class="col-md-4 col-sm-4 col-xs-4">PRIMER APELLIDO</div>
-                        <div class="col-md-4 col-sm-4 col-xs-4">SEGUNDO APELLIDO</div>
-                        <div class="col-md-4 col-sm-4 col-xs-4">USUARIO</div>
-                        <div class="col-md-4 col-sm-4 col-xs-4">CONTRASEÑA</div>
-                        <div class="col-md-4 col-sm-4 col-xs-4">ESPECIALIDAD</div>
-                        <div class="col-md-4 col-sm-4 col-xs-4"></div>
+                        <div class="col"><h5>NOMBRE</h5></div>
+                        <div class="col"><h5>PRIMER APELLIDO</h5></div>
+                        <div class="col"><h5>SEGUNDO APELLIDO</h5></div>
+                        <div class="col"><h5>USUARIO</h5></div>
+                        <div class="col"><h5>CONTRASEÑA</h5></div>
+                        <div class="col"><h5>ESPECIALIDAD</h5></div>
+                        <div class="col"></div>
                 </div>
 <?php
     include("conexion.php");
@@ -49,13 +49,13 @@
 
         echo"<div class='row'>";
         
-        echo"<div class='col-md-4 col-sm-4 col-xs-4'>$linea[nombre]</div>";
-        echo"<div class='col-md-4 col-sm-4 col-xs-4'>$linea[primerapellido]</div>";
-        echo"<div class='col-md-4 col-sm-4 col-xs-4'>$linea[segundoapellido]</div>";
-        echo"<div class='col-md-4 col-sm-4 col-xs-4'>$linea[usuario]</div>";
-        echo"<div class='col-md-4 col-sm-4 col-xs-4'>$linea[clave]</div>";
-        echo"<div class='col-md-4 col-sm-4 col-xs-4'>$linea[especialidad]</div>";
-        echo"<div class='col-md-4 col-sm-4 col-xs-4'><a href='bor-usuarios.php?clave=$linea[idusuario]'><img src='./images/borrar.png' width='25'></a></div>";
+        echo"<div class='col'>$linea[nombre]</div>";
+        echo"<div class='col'>$linea[primerapellido]</div>";
+        echo"<div class='col'>$linea[segundoapellido]</div>";
+        echo"<div class='col'>$linea[usuario]</div>";
+        echo"<div class='col'>$linea[clave]</div>";
+        echo"<div class='col'>$linea[especialidad]</div>";
+        echo"<div class='col'><a href='bor-usuarios.php?clave=$linea[idusuario]'><img src='./images/borrar.png' width='25'></a></div>";
         echo"</div>";
             
             
@@ -64,11 +64,12 @@
     }
 
 ?>
+<br>
             <div class="row">
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href="form-usuarios.php"><input type="button" class="btn" value="Nuevo usuario"></a>
                         </div>
-                        <div class="col-*-*">
+                        <div class="col">
                             <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
                         </div>
                     </div>

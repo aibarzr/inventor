@@ -15,27 +15,27 @@
         include("conexion.php");
     ?>
         <div class="container">
-            <div id="menuContainer">
+            <div id="menuContainer" style="z-index:2">
                 <div id="logo">
-                    <img src="images/logosz.png" />
+                    <a href="dashboard.php"><img src="images/logosz.png" width="30"/></a>
                 </div>
                 <div id="user">
-                    <h2>Pepe Manué
+                    <h2>
                         <?php
-                            //session_start();
-                            //echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
+                            session_start();
+                            echo "Usuario: $_SESSION[nombre] $_SESSION[apellido]<br>";
                         ?>
                     </h2>
-                    <a href="logout.php"><img src="images/logout.png" width="30" /></a>
+                    <a href="logout.php"><img src="images/logout.png" width="30"/></a>
                 </div>
             </div>
             <br><br><br><br><br><br>
             <div id="formcontainer">
                 <form name="softwareinstalado" id="softwareinstalado" method="post" action="ins-softwareinstalado.php">
                         <div class="row">
-                            <div class="col-*-*">SELECCIONE EL NUMERO INTERNO DEL ORDENADOR:</div>
-                            <div class="col-*-*">
-                                <select name="ordenadores" id="ordenadores">
+                            <div class="col" style="font-size: 20px">SELECCIONE EL NUMERO INTERNO DEL ORDENADOR:</div>
+                            <div class="col">
+                                <select name="ordenadores" id="ordenadores" style="height: 30px; width: 100%">
                                         <?php
                                             $sql="SELECT * FROM ordenadores";
                                             $registros = mysqli_query($conexion, $sql);
@@ -46,29 +46,29 @@
                                 </select>  
                             </div>
                         </div>
+                        <br>
                     <div class="row">
-                        <div class="col-*-*">SOFTWARE:</div>
-                        <div class="col-*-*">
-                            
+                        <div class="col" style="font-size: 20px">SOFTWARE:</div>
+                        <div class="col">
                                     <?php
                                         $sql="SELECT * FROM software";
                                         $registros = mysqli_query($conexion, $sql);
                                         while($linea=mysqli_fetch_array($registros)){
-                                            echo"<label><input type='checkbox' name='software[]' value='$linea[idsoftware]'>$linea[software]</label><br>";
+                                            echo"<label style = \"padding-left: 40px; padding-right: 40px;\"><input type='checkbox' name='software[]' value='$linea[idsoftware]'>$linea[software]</label>";
                                         }
                                     ?>
-                            
                         </div>
                     </div>
+                    <br>
                     
 
                             <div class="row">
-                                <div class="col-*-*"><button type="submit" class="btn">Añadir</button></div>
-                                <div class="col-*-*">
-                                    <a href="ver-buscarsoftwareinstalado.php"><input type="button" class="btn" value="Ver"></a>
+                                <div class="col"><button type="submit" class="btn" style="width: 130px;">Añadir</button></div>
+                                <div class="col">
+                                    <a href="ver-buscarsoftwareinstalado.php"><input type="button" class="btn" value="Ver" style="width: 130px;"></a>
                                 </div>
-                                <div class="col-*-*">
-                                    <a href=""><input type="button" class="btn" value="Volver a inicio"></a>
+                                <div class="col">
+                                    <a href=""><input type="button" class="btn" value="Volver a inicio" style="width: 130px;"></a>
                                 </div>
                             </div>
                     </div>
